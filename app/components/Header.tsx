@@ -1,6 +1,6 @@
 "use client";
 
-
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Header() {
@@ -69,7 +69,11 @@ export default function Header() {
           flex-shrink: 0;
         }
 
-   
+        .hdr-logo-img {
+          object-fit: contain;
+          filter: brightness(0) invert(1);
+          opacity: 0.95;
+        }
 
         /* Nav */
         .hdr-nav {
