@@ -68,13 +68,7 @@ export default function InstagramEmbed() {
 
       <div className="ig-embeds-grid">
 
-        {/* Post 01 */}
-        <blockquote
-          className="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/reel/DVQ8TxCDgr6/?utm_source=ig_embed&utm_campaign=loading"
-          data-instgrm-version="14"
-        />
+      
 
         {/* Post 02 */}
         <blockquote
@@ -89,6 +83,14 @@ export default function InstagramEmbed() {
           className="instagram-media"
           data-instgrm-captioned
           data-instgrm-permalink="https://www.instagram.com/reel/DXKjnw5jGow/?utm_source=ig_embed&utm_campaign=loading"
+          data-instgrm-version="14"
+        />
+
+          {/* Post 01 */}
+        <blockquote
+          className="instagram-media"
+          data-instgrm-captioned
+          data-instgrm-permalink="https://www.instagram.com/reel/DVQ8TxCDgr6/?utm_source=ig_embed&utm_campaign=loading"
           data-instgrm-version="14"
         />
 
