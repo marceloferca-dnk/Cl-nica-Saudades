@@ -264,17 +264,30 @@ export default function Header() {
       <header className={`hdr ${scrolled ? "hdr--scrolled" : "hdr--transparent"}`}>
         <div className="hdr-inner">
 
-          {/* Logo */}
-          <a href="#home" className="hdr-logo">
-            <Image
-              src="/logo.png"
-              alt="Clínica Saudade"
-              width={110}
-              height={44}
-              className="hdr-logo-img"
-              priority
-            />
-          </a>
+  {/* Logo */}
+<a href="#home" className="hdr-logo">
+  <span style={{
+    fontFamily: "'Playfair Display', serif",
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#ffffff',
+    letterSpacing: '0.02em',
+    lineHeight: 1,
+  }}>
+    Clínica
+  </span>
+  <span style={{
+    fontFamily: "'Playfair Display', serif",
+    fontSize: '20px',
+    fontWeight: '400',
+    color: '#14b8a6',
+    letterSpacing: '0.02em',
+    lineHeight: 1,
+    marginLeft: '6px',
+  }}>
+    Saudades
+  </span>
+</a>
 
           {/* Nav desktop */}
           <nav className="hdr-nav">
