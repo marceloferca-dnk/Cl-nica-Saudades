@@ -315,123 +315,357 @@ export default function Home() {
         }
 
         /* ── SERVICES ── */
-        .services {
-          padding: 100px 24px;
-          background: var(--offwhite);
-        }
+       /* ── SERVICES ── */
+.services {
+  padding: 110px 24px;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(201,127,45,0.10) 0%, transparent 60%),
+    var(--offwhite);
+  overflow: hidden;
+}
 
-        .section-header {
-          text-align: center;
-          margin-bottom: 64px;
-        }
+.services-modern {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
 
-        .section-tag {
-          display: inline-block;
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--teal);
-          margin-bottom: 16px;
-        }
+.services-copy {
+  position: relative;
+}
 
-        .section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(28px, 4vw, 42px);
-          font-weight: 600;
-          color: var(--navy);
-          line-height: 1.2;
-        }
+.services-copy .section-header {
+  text-align: left;
+  margin-bottom: 0;
+}
 
-        .section-desc {
-          font-size: 16px;
-          color: var(--muted);
-          max-width: 500px;
-          margin: 16px auto 0;
-          line-height: 1.7;
-          font-weight: 300;
-        }
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
 
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 16px;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
 
-        @media (max-width: 1100px) {
-          .services-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-        @media (max-width: 860px) {
-          .services-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 600px) {
-          .services-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.08;
+}
 
-        .service-card {
-          background: var(--white);
-          border-radius: 14px;
-          padding: 28px 22px;
-          border: 1px solid rgba(111,63,31,0.08);
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
+.section-desc {
+  font-size: 16px;
+  color: #6f5a4d;
+  max-width: 560px;
+  margin: 18px auto 0;
+  line-height: 1.75;
+  font-weight: 400;
+}
 
-        .service-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 18px;
-          right: 18px;
-          height: 2px;
-          background: #c97f2d;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
+.services-copy .section-desc {
+  margin-left: 0;
+  margin-right: 0;
+}
 
-        .service-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 24px 48px rgba(111,63,31,0.12);
-        }
+.services-highlights {
+  margin-top: 34px;
+  display: grid;
+  gap: 14px;
+}
 
-        .service-card:hover::before {
-          opacity: 1;
-        }
+.services-highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #3a2417;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-        .service-icon {
-          width: 48px;
-          height: 48px;
-          background: rgba(13,148,136,0.08);
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--teal);
-          margin-bottom: 16px;
-          transition: background 0.3s;
-        }
+.services-highlight span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #c97f2d;
+  box-shadow: 0 0 0 6px rgba(201,127,45,0.10);
+  flex-shrink: 0;
+}
 
-        .service-card:hover .service-icon {
-          background: rgba(201,127,45,0.10);
-        }
+.services-copy-actions {
+  margin-top: 34px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-        .service-card h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 16px;
-          font-weight: 700;
-          color: #1f1a17;
-          margin-bottom: 8px;
-        }
+.services-vertical {
+  position: relative;
+  height: 620px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 28px;
+  padding-right: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
 
-        .service-card p {
-          font-size: 13px;
-          color: #5f524b;
-          line-height: 1.6;
-          font-weight: 400;
-        }
+.services-vertical:hover {
+  scrollbar-color: rgba(201,127,45,0.55) rgba(111,63,31,0.08);
+}
+
+.services-vertical::-webkit-scrollbar {
+  width: 8px;
+}
+
+.services-vertical::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.services-vertical::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.services-vertical:hover::-webkit-scrollbar-track {
+  background: rgba(111,63,31,0.08);
+}
+
+.services-vertical:hover::-webkit-scrollbar-thumb {
+  background: rgba(201,127,45,0.55);
+}
+
+.services-vertical:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(201,127,45,0.85);
+}
+.services-vertical::before,
+.services-vertical::after {
+  content: '';
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 3;
+  pointer-events: none;
+  display: block;
+}
+
+.services-vertical::before {
+  top: 0;
+  background: linear-gradient(180deg, var(--offwhite) 0%, rgba(251,246,239,0) 100%);
+}
+
+.services-vertical::after {
+  bottom: 0;
+  background: linear-gradient(0deg, var(--offwhite) 0%, rgba(251,246,239,0) 100%);
+}
+
+.services-vertical-track {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: servicesVertical 95s linear infinite;
+  will-change: transform;
+}
+
+.services-vertical:hover .services-vertical-track {
+  animation-play-state: paused;
+}
+
+.service-card {
+  min-height: 170px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 100%);
+  border-radius: 24px;
+  padding: 26px;
+  border: 1px solid rgba(111,63,31,0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(111,63,31,0.07);
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(201,127,45,0.13), transparent 38%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #c97f2d, #e8b06a);
+  border-radius: 0 999px 999px 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateX(-8px);
+  box-shadow: 0 30px 70px rgba(111,63,31,0.16);
+  border-color: rgba(201,127,45,0.24);
+}
+
+.service-card:hover::before,
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-icon {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  background: rgba(58,36,23,0.06);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b211b;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  background: rgba(201,127,45,0.13);
+  color: #c97f2d;
+  transform: scale(1.05);
+}
+
+.service-card h3 {
+  position: relative;
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #16110e;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.service-card p {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  color: #5f524b;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.services-note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #8a6b55;
+}
+
+@keyframes servicesVertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .services-modern {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .services-copy .section-header {
+    text-align: center;
+  }
+
+  .services-copy .section-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-highlights {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .services-copy-actions {
+    justify-content: center;
+  }
+
+  .services-vertical {
+    height: 560px;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 600px) {
+  .services {
+    padding: 84px 18px;
+  }
+
+  .services-vertical {
+    height: 520px;
+    border-radius: 22px;
+  }
+
+  .services-vertical::before,
+  .services-vertical::after {
+    height: 70px;
+  }
+
+  .services-vertical-track {
+    gap: 14px;
+    animation-duration: 120s;
+  }
+
+  .service-card {
+    min-height: 180px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px;
+  }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .service-card h3 {
+    font-size: 19px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+  }
+}
 
         /* ── SOBRE ── */
         .sobre {
@@ -824,25 +1058,65 @@ export default function Home() {
         </div>
 
         {/* ── SERVIÇOS ── */}
-        <section id="servicos" className="services">
-          <div className="section-header">
-            <span className="section-tag">O que oferecemos</span>
-            <h2 className="section-title">Serviços completos<br />para sua saúde</h2>
-            <p className="section-desc">
-              Da consulta ao tratamento, nossa equipe acompanha você em cada etapa da sua saúde.
-            </p>
-          </div>
+       <section id="servicos" className="services">
+  <div className="services-modern">
+    <div className="services-copy">
+      <div className="section-header">
+        <span className="section-tag">O que oferecemos</span>
+        <h2 className="section-title">
+          Especialidades e cuidados<br />em um só lugar
+        </h2>
+        <p className="section-desc">
+          Uma estrutura completa para acompanhar sua saúde em diferentes fases da vida,
+          com atendimento humanizado, tecnologia e profissionais especializados.
+        </p>
+      </div>
 
-          <div className="services-grid">
-            {services.map((item, i) => (
-              <div key={i} className="service-card">
-                <div className="service-icon">{item.icon}</div>
-                <h3>{item.titulo}</h3>
-                <p>{item.desc}</p>
-              </div>
-            ))}
+      <div className="services-highlights">
+        <div className="services-highlight">
+          <span />
+          Atendimento multidisciplinar
+        </div>
+        <div className="services-highlight">
+          <span />
+          Cuidado próximo e personalizado
+        </div>
+        <div className="services-highlight">
+          <span />
+          Consultas, exames e acompanhamento
+        </div>
+      </div>
+
+      <div className="services-copy-actions">
+        <a href="#contato" className="btn-primary">
+          Agendar atendimento
+        </a>
+        <a href="#sobre" className="btn-outline">
+          Conhecer a clínica
+        </a>
+      </div>
+
+      <p className="services-note">
+          Passe o mouse para pausar a animação e role a lista para explorar as especialidades.
+
+      </p>
+    </div>
+
+    <div className="services-vertical">
+      <div className="services-vertical-track">
+        {[...services, ...services].map((item, i) => (
+          <div key={`${item.titulo}-${i}`} className="service-card">
+            <div className="service-icon">{item.icon}</div>
+            <div>
+              <h3>{item.titulo}</h3>
+              <p>{item.desc}</p>
+            </div>
           </div>
-        </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* ── SOBRE ── */}
         <section id="sobre" className="sobre">
