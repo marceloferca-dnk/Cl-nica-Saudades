@@ -1,4 +1,5 @@
 import InstagramEmbed from "./components/InstagramEmbed";
+import CookieBanner from "./components/CookieBanner";
 
 const services = [
   {
@@ -85,6 +86,11 @@ const stats = [
   { value: "98%", label: "Satisfação" },
 ];
 
+const clinicAddress = "Av. Brasil, 145 - Edificio Saudades - sala 9 - Centro, Saudades - SC, 89868-000";
+const clinicMapsQuery = encodeURIComponent(clinicAddress);
+const clinicMapsUrl = `https://www.google.com/maps/search/?api=1&query=${clinicMapsQuery}`;
+const clinicMapsEmbedUrl = `https://www.google.com/maps?q=${clinicMapsQuery}&output=embed`;
+
 export default function Home() {
   return (
     <>
@@ -92,14 +98,14 @@ export default function Home() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
         :root {
-          --navy: #0a1628;
-          --navy-mid: #132040;
-          --teal: #0d9488;
-          --teal-light: #14b8a6;
-          --gold: #c9a84c;
-          --offwhite: #f8f6f1;
-          --text: #1a1a2e;
-          --muted: #6b7280;
+          --navy: #6f3f1f;
+          --navy-mid: #8a5128;
+          --teal: #c97f2d;
+          --teal-light: #d88a32;
+          --gold: #c97f2d;
+          --offwhite: #fbf6ef;
+          --text: #3a2417;
+          --muted: #8a6b55;
           --white: #ffffff;
         }
 
@@ -124,24 +130,23 @@ export default function Home() {
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          background: var(--navy);
+          background: linear-gradient(180deg, #fffaf4 0%, #fbf1e5 100%);
         }
 
         .hero-bg {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(ellipse 80% 60% at 70% 40%, rgba(13,148,136,0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201,168,76,0.10) 0%, transparent 50%),
-            var(--navy);
+            radial-gradient(ellipse 70% 55% at 70% 35%, rgba(201,127,45,0.16) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 70% at 10% 80%, rgba(111,63,31,0.08) 0%, transparent 55%);
         }
 
         .hero-grid {
           position: absolute;
           inset: 0;
           background-image:
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            linear-gradient(rgba(111,63,31,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(111,63,31,0.04) 1px, transparent 1px);
           background-size: 60px 60px;
         }
 
@@ -154,13 +159,21 @@ export default function Home() {
           animation: fadeUp 0.9s ease both;
         }
 
+        .hero-logo {
+          width: clamp(180px, 26vw, 320px);
+          height: auto;
+          display: block;
+          margin: 0 auto 28px;
+          filter: drop-shadow(0 18px 36px rgba(58, 36, 23, 0.22));
+        }
+
         .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(13,148,136,0.15);
-          border: 1px solid rgba(13,148,136,0.35);
-          color: var(--teal-light);
+          background: rgba(201,127,45,0.10);
+          border: 1px solid rgba(201,127,45,0.28);
+          color: var(--teal);
           font-size: 12px;
           font-weight: 500;
           letter-spacing: 0.12em;
@@ -174,7 +187,7 @@ export default function Home() {
           content: '';
           width: 6px;
           height: 6px;
-          background: var(--teal-light);
+          background: var(--teal);
           border-radius: 50%;
           animation: pulse 2s infinite;
         }
@@ -183,19 +196,19 @@ export default function Home() {
           font-family: 'Playfair Display', serif;
           font-size: clamp(44px, 7vw, 76px);
           font-weight: 700;
-          color: var(--white);
+          color: var(--text);
           line-height: 1.1;
           letter-spacing: -0.02em;
           margin-bottom: 24px;
         }
 
         .hero h1 span {
-          color: var(--teal-light);
+          color: var(--teal);
         }
 
         .hero-subtitle {
           font-size: 18px;
-          color: rgba(255,255,255,0.65);
+          color: var(--muted);
           font-weight: 300;
           line-height: 1.7;
           max-width: 540px;
@@ -226,9 +239,9 @@ export default function Home() {
         }
 
         .btn-primary:hover {
-          background: var(--teal-light);
+          background: var(--teal);
           transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(13,148,136,0.35);
+          box-shadow: 0 16px 36px rgba(201,127,45,0.36);
         }
 
         .btn-outline {
@@ -236,20 +249,20 @@ export default function Home() {
           align-items: center;
           gap: 10px;
           padding: 16px 32px;
-          border: 1px solid rgba(255,255,255,0.25);
-          color: rgba(255,255,255,0.85);
+          border: 1px solid rgba(111,63,31,0.22);
+          color: var(--text);
           border-radius: 8px;
           text-decoration: none;
           font-weight: 400;
           font-size: 15px;
           transition: all 0.25s ease;
-          background: transparent;
+          background: rgba(255,255,255,0.5);
           cursor: pointer;
         }
 
         .btn-outline:hover {
-          background: rgba(255,255,255,0.07);
-          border-color: rgba(255,255,255,0.5);
+          background: rgba(201,127,45,0.08);
+          border-color: rgba(201,127,45,0.45);
         }
 
         .hero-scroll {
@@ -261,7 +274,7 @@ export default function Home() {
           flex-direction: column;
           align-items: center;
           gap: 8px;
-          color: rgba(255,255,255,0.35);
+          color: rgba(58,36,23,0.4);
           font-size: 11px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -270,9 +283,9 @@ export default function Home() {
 
         /* ── STATS ── */
         .stats {
-          background: var(--navy-mid);
-          border-top: 1px solid rgba(255,255,255,0.06);
-          border-bottom: 1px solid rgba(255,255,255,0.06);
+          background: var(--navy);
+          border-top: 1px solid rgba(255,255,255,0.08);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
           padding: 40px 24px;
         }
 
@@ -289,13 +302,13 @@ export default function Home() {
           font-family: 'Playfair Display', serif;
           font-size: 36px;
           font-weight: 700;
-          color: var(--teal-light);
+          color: var(--teal);
           display: block;
         }
 
         .stat-label {
           font-size: 13px;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.66);
           font-weight: 300;
           margin-top: 4px;
           display: block;
@@ -361,7 +374,7 @@ export default function Home() {
           background: var(--white);
           border-radius: 14px;
           padding: 28px 22px;
-          border: 1px solid rgba(0,0,0,0.06);
+          border: 1px solid rgba(111,63,31,0.08);
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
@@ -371,17 +384,17 @@ export default function Home() {
           content: '';
           position: absolute;
           top: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, var(--teal), var(--teal-light));
+          left: 18px;
+          right: 18px;
+          height: 2px;
+          background: #c97f2d;
           opacity: 0;
           transition: opacity 0.3s ease;
         }
 
         .service-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 24px 48px rgba(0,0,0,0.1);
+          box-shadow: 0 24px 48px rgba(111,63,31,0.12);
         }
 
         .service-card:hover::before {
@@ -402,22 +415,22 @@ export default function Home() {
         }
 
         .service-card:hover .service-icon {
-          background: rgba(13,148,136,0.15);
+          background: rgba(201,127,45,0.10);
         }
 
         .service-card h3 {
           font-family: 'Playfair Display', serif;
           font-size: 16px;
-          font-weight: 600;
-          color: var(--navy);
+          font-weight: 700;
+          color: #1f1a17;
           margin-bottom: 8px;
         }
 
         .service-card p {
           font-size: 13px;
-          color: var(--muted);
+          color: #5f524b;
           line-height: 1.6;
-          font-weight: 300;
+          font-weight: 400;
         }
 
         /* ── SOBRE ── */
@@ -451,7 +464,7 @@ export default function Home() {
         .sobre-card-bg {
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse 80% 60% at 80% 20%, rgba(13,148,136,0.25) 0%, transparent 60%);
+          background: radial-gradient(ellipse 80% 60% at 80% 20%, rgba(201,127,45,0.28) 0%, transparent 60%);
         }
 
         .sobre-card-content {
@@ -470,7 +483,7 @@ export default function Home() {
 
         .sobre-quote-author {
           font-size: 13px;
-          color: var(--teal-light);
+          color: var(--teal);
           letter-spacing: 0.08em;
           text-transform: uppercase;
           font-weight: 500;
@@ -482,7 +495,7 @@ export default function Home() {
           right: -20px;
           width: 120px;
           height: 120px;
-          border: 2px solid rgba(13,148,136,0.2);
+          border: 2px solid rgba(201,127,45,0.25);
           border-radius: 50%;
         }
 
@@ -547,7 +560,7 @@ export default function Home() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(ellipse 60% 70% at 50% 50%, rgba(13,148,136,0.15) 0%, transparent 60%);
+            radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,127,45,0.18) 0%, transparent 60%);
         }
 
         .cta-content {
@@ -568,7 +581,7 @@ export default function Home() {
 
         .cta p {
           font-size: 16px;
-          color: rgba(255,255,255,0.55);
+          color: rgba(255,255,255,0.68);
           font-weight: 300;
           margin-bottom: 40px;
           line-height: 1.7;
@@ -592,6 +605,108 @@ export default function Home() {
         .btn-whatsapp:hover {
           transform: translateY(-3px);
           box-shadow: 0 16px 40px rgba(37,211,102,0.4);
+        }
+
+        /* ── MAPA / CONTATO ── */
+        .map-section {
+          padding: 100px 24px;
+          background: var(--offwhite);
+        }
+
+        .map-inner {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 32px;
+          align-items: stretch;
+        }
+
+        .map-info {
+          background: var(--white);
+          border: 1px solid rgba(111,63,31,0.08);
+          border-radius: 20px;
+          padding: 36px;
+          box-shadow: 0 24px 48px rgba(111,63,31,0.08);
+        }
+
+        .map-info h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: clamp(28px, 3.5vw, 40px);
+          font-weight: 700;
+          color: var(--navy);
+          line-height: 1.2;
+          margin-bottom: 16px;
+        }
+
+        .map-info p {
+          font-size: 15px;
+          color: #5f524b;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .map-address {
+          display: flex;
+          gap: 12px;
+          align-items: flex-start;
+          padding: 16px;
+          border-radius: 14px;
+          background: rgba(58,36,23,0.04);
+          color: var(--text);
+          font-size: 14px;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+
+        .map-address svg {
+          color: var(--teal);
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .map-actions {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .btn-map {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 22px;
+          background: var(--teal);
+          color: var(--white);
+          border-radius: 10px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 14px;
+          transition: all 0.25s ease;
+          box-shadow: 0 12px 28px rgba(201,127,45,0.24);
+        }
+
+        .btn-map:hover {
+          background: var(--teal-light);
+          transform: translateY(-2px);
+          box-shadow: 0 16px 36px rgba(201,127,45,0.32);
+        }
+
+        .map-frame-wrap {
+          min-height: 420px;
+          border-radius: 22px;
+          overflow: hidden;
+          border: 1px solid rgba(111,63,31,0.10);
+          box-shadow: 0 28px 60px rgba(111,63,31,0.12);
+          background: var(--white);
+        }
+
+        .map-frame-wrap iframe {
+          width: 100%;
+          height: 100%;
+          min-height: 420px;
+          border: 0;
+          display: block;
         }
 
         /* ── ANIMATIONS ── */
@@ -624,6 +739,14 @@ export default function Home() {
           .sobre-visual {
             order: -1;
           }
+
+          .map-inner {
+            grid-template-columns: 1fr;
+          }
+
+          .map-info {
+            padding: 28px;
+          }
         }
 
         @media (max-width: 480px) {
@@ -646,6 +769,12 @@ export default function Home() {
           <div className="hero-grid" />
 
           <div className="hero-content">
+            <img
+              src="/logo-clinica-saudades.png"
+              alt="Clínica Saudades"
+              className="hero-logo"
+            />
+
             <div className="hero-badge">
               Excelência em Saúde
             </div>
@@ -725,7 +854,7 @@ export default function Home() {
                   <p className="sobre-quote">
                     "Nossa missão é tratar cada paciente como único, combinando tecnologia moderna com cuidado humano genuíno."
                   </p>
-                  <span className="sobre-quote-author">— Clínica Saudade</span>
+                  <span className="sobre-quote-author">— Clínica Saudades</span>
                 </div>
               </div>
               <div className="sobre-decoration" />
@@ -735,7 +864,7 @@ export default function Home() {
               <span className="section-tag">Nossa história</span>
               <h2>Mais de 15 anos cuidando de quem importa</h2>
               <p>
-                Fundada com o propósito de transformar a experiência em saúde, a Clínica Saudade une profissionais altamente qualificados a uma estrutura moderna e acolhedora.
+                Fundada com o propósito de transformar a experiência em saúde, a Clínica Saudades une profissionais altamente qualificados a uma estrutura moderna e acolhedora.
               </p>
               <p>
                 Cada detalhe do nosso atendimento é pensado para que você se sinta seguro, ouvido e bem cuidado.
@@ -787,7 +916,49 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── MAPA ── */}
+        <section className="map-section">
+          <div className="map-inner">
+            <div className="map-info">
+              <span className="section-tag">Localização</span>
+              <h2>Como chegar até a clínica</h2>
+              <p>
+                Veja nossa localização no mapa ou clique no botão para abrir a rota diretamente no Google Maps.
+              </p>
+
+              <div className="map-address">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>{clinicAddress}</span>
+              </div>
+
+              <div className="map-actions">
+                <a href={clinicMapsUrl} target="_blank" rel="noopener noreferrer" className="btn-map">
+                  Abrir no Google Maps
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="map-frame-wrap">
+              <iframe
+                title="Mapa da Clínica Saudades"
+                src={clinicMapsEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+
       </main>
+      <CookieBanner />
     </>
   );
 }
