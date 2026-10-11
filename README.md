@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clínica Saudades
 
-## Getting Started
+Site institucional da Clínica Saudades, desenvolvido com Next.js e Tailwind CSS.
 
-First, run the development server:
+## Rodar localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000`. Se a porta estiver ocupada, o Next.js informará a porta alternativa no terminal.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Feed automático do Instagram
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O site consulta a API oficial da Meta, atualiza o feed a cada cinco minutos e destaca automaticamente a publicação com mais curtidas entre as publicações retornadas.
 
-## Learn More
+1. Use uma conta profissional do Instagram (Business ou Creator) vinculada à configuração exigida pelo aplicativo da Meta.
+2. Crie/configure o aplicativo no Meta for Developers e obtenha o ID da conta do Instagram e um token de acesso válido.
+3. Copie `.env.example` para `.env.local`.
+4. Preencha `INSTAGRAM_USER_ID` e `INSTAGRAM_ACCESS_TOKEN`.
+5. Reinicie o servidor local.
 
-To learn more about Next.js, take a look at the following resources:
+Sem essas variáveis, o site mostra as publicações fixas já cadastradas como alternativa. Nunca envie `.env.local` ou o token para o GitHub.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Publicação na Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Cadastre as mesmas variáveis em **Project Settings > Environment Variables** na Vercel e faça um novo deploy. Depois disso, novas publicações aparecerão automaticamente, sem alteração de código.
 
-## Deploy on Vercel
+## Verificações
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx tsc --noEmit
+npm run build
+```
