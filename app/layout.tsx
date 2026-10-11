@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://clinicasaudades.com.br";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.clinicasaudades.com.br";
 const title = "Clínica Saudades | Saúde e cuidado";
 const description = "Atendimento médico e multidisciplinar em Saudades, Santa Catarina. Consultas, exames e cuidado próximo para toda a família.";
 
